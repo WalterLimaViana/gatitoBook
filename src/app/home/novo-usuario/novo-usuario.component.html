@@ -7,6 +7,14 @@
       placeholder="Email"
       type="email"
       formControlName="email">
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('email')?.errors?.['required'] &&
+      novoUsuarioForm.get('email')?.touched"
+      mensagem="Email obrigatório"></app-mensagem>
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('email')?.errors?.['email'] &&
+      novoUsuarioForm.get('email')?.touched"
+      mensagem="Email no formato incorreto"></app-mensagem>
   </div>
   <div class="mb-3">
     <input
@@ -14,6 +22,10 @@
       class="form-control"
       type="text"
       formControlName="fullName">
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('fullName')?.errors &&
+      novoUsuarioForm.get('fullName')?.touched"
+      mensagem="Nome incorreto"></app-mensagem>
   </div>
   <div class="mb-3">
     <input
@@ -21,6 +33,13 @@
       class="form-control"
       type="text"
       formControlName="username">
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('username')?.errors?.['minusculo'] &&
+      novoUsuarioForm.get('username')?.touched"
+      mensagem="Usuário deve ser letra minúscula"></app-mensagem>
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.['usuarioExistente']"
+      mensagem="Usuário já existe"></app-mensagem>
   </div>
   <div class="mb-3">
     <input
