@@ -13,7 +13,7 @@ const API = environment.apiURL;
 export class AnimaisService {
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  listaDoUsuarios(nomeDoUsuario: string): Observable<Animais> {
+  listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
     const token = this.tokenService.retornaToken();
     const headers = new HttpHeaders().append('x-access-token', token);
     return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`, {
