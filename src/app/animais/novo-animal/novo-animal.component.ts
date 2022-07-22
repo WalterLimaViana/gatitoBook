@@ -17,4 +17,6 @@ export class NovoAnimalComponent implements OnInit {
   ngOnInit(): void {}
 
   upload() {}
+
+  gravaArquivo(arquivo: any) {}
 }
