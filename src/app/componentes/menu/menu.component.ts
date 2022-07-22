@@ -13,6 +13,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {}
 
   abreMenu() {
-    this.mostraMenu = !this.abreMenu;
+    this.mostraMenu = !this.mostraMenu;
   }
 }
