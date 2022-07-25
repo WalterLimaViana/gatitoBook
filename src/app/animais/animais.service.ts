@@ -16,7 +16,7 @@ export class AnimaisService {
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
-    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`, {});
+    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`);
   }
 
   buscaPorID(id: number): Observable<Animal> {

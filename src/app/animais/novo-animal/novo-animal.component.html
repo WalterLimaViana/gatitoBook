@@ -1,20 +1,25 @@
 <div class="container">
   <form [formGroup]="formularioAnimal" class="row" (submit)="upload()">
     <div class="col-md-6 text-center">
-      <div class="form-group" ng-if="!preview; else previewImage">
+      <div class="form-group" *ngIf="!preview; else previewImage">
         <button
           type="button"
           (click)="fileInput.click()"
-          class="btn-primary">
+          class="btn btn-primary">
           <i class="fa fa-image fa-4x align-middle"></i>
         </button>
-        <input #fileInput
+        <input
+          #fileInput
           type="file"
-          hidden formControlName="file"
-          accept="image/*" (change)="gravaArquivo($event.target)">
+          hidden
+          formControlName="file"
+          accept="image/*"
+          (change)="gravaArquivo($event.target)"
+          />
         <app-mensagem
           mensagem="selecione a foto"
-          ngIf="!!formularioAnimal.get('file')?.errors?.required"></app-mensagem>
+          *ngIf="!!formularioAnimal.get('file')?.errors?.['required']">
+        </app-mensagem>
       </div>
       <ng-template #previewImage>
         <app-animal
@@ -22,13 +27,18 @@
       </ng-template>
     </div>
     <div class="col-md-6">
-      <div class="form-group"><textarea formControlName="description"
+      <div class="form-group">
+        <textarea
+          formControlName="description"
           class="form-control form-control-sm"
           placeholder="Descrição do Animal">
-          <app-mensagem
-            mensagem="Tamanho máximo do campo é 300 caracteres"
-            *ngIf="!!formularioAnimal.get('description')?.errors.maxLength"></app-mensagem></textarea>
+        </textarea>
+        <app-mensagem
+          mensagem="Tamanho máximo do campo é 300 caracteres"
+          *ngIf="!!formularioAnimal.get('description')?.errors?.['maxlength']">
+        </app-mensagem>
       </div>
+
       <div class="form-group">
         <label class="text-muted">
           Permite comentário
@@ -38,8 +48,16 @@
 
       <div
         *ngIf="!percentualConcluido; else uploaddiv">
-        <button class="btn btn-primary btn-block">Enviar</button>
-        <a routerLink="['animais']" class="btn btn-secondary btn-block">Cancelar</a>
+        <button
+          [disabled]="formularioAnimal.invalid"
+          type="submit"
+          class="btn btn-primary btn-block">
+          Enviar
+        </button>
+
+        <a routerLink="['animais']" class="btn btn-secondary btn-block">
+          Cancelar
+        </a>
       </div>
 
       <ng-template #uploaddiv>
