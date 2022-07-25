@@ -20,8 +20,10 @@
   <div class="d-grip gap-2">
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-primary botao"
       [disabled]="loginForm.invalid">Login</button>
   </div>
 </form>
-<p>Não é um usuário?<a [routerLink]="['novousuario']"> Se cadastre!</a></p>
+<div class="link">
+  <p>Não é um usuário?<a [routerLink]="['novousuario']"> Se cadastre!</a></p>
+</div>
