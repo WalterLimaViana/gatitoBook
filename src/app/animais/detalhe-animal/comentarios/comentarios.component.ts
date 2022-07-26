@@ -1,5 +1,5 @@
-import { tap } from 'rxjs/internal/operators/tap';
-import { switchMap } from 'rxjs/operators';
+// import { tap } from 'rxjs/internal/operators/tap';
+import { switchMap, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { Comentarios } from './comentarios';
